@@ -49,6 +49,7 @@
     alejandra
     prettierd
     black
+    stow
   ];
   fonts = {
     packages = with pkgs; [
@@ -64,8 +65,11 @@
 
     taps = [
       "nikitabobko/tap"
+      "koekeishiya/formulae"
     ];
-    brews = [];
+    brews = [
+      "koekeishiya/formulae/yabai"
+    ];
     casks = [
       "firefox"
       "alfred"

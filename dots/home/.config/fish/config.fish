@@ -21,7 +21,7 @@ function lg
 end
 
 function cfg
-  command nvim -c "cd $HOME/dev/dotfiles/"
+  command nvim -c "cd $HOME/dev/nix/dots/home"
 end
 
 function dev

@@ -17,15 +17,16 @@
     bat
   ];
 
-  # programs.fish = {
-  #   enable = true;
-  #   shellInit = ''
-  #     set -gx EDITOR hx
-  #   '';
-  #   shellAliases = {
-  #     ll = "eza -la";
-  #     cat = "bat";
-  #   };
-  # };
-  # home.file.".config/helix/languages.toml".source = ./configs/helix/languages.toml;
+  home.file = {
+    # "." = {
+    #   source = ./dots;
+    #   target = "~";
+    #   recursive = true;
+    # };
+
+    # ".gitignore".text = ''
+    #   *.log
+    #   *.bak
+    # '';
+  };
 }
