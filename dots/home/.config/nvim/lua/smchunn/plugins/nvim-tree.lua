@@ -1,6 +1,6 @@
 local HEIGHT_RATIO = 0.9
 local WIDTH_RATIO = 0.9
-local OPACITY = 0
+local OPACITY = 10
 
 local function nvim_tree_on_attach(bufnr)
   local api = require("nvim-tree.api")
@@ -86,6 +86,11 @@ return {
     },
     hijack_directories = {
       enable = false,
+    },
+    renderer = {
+      icons = {
+        padding = " ", -- U+00A0 NO-BREAK SPACE
+      },
     },
     view = {
       float = {

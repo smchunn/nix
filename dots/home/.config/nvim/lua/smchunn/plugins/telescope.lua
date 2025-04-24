@@ -13,18 +13,24 @@ return {
     local actions = require("telescope.actions")
     local builtin = require("telescope.builtin")
     local utils = require("smchunn.core.utils")
-    vim.api.nvim_set_hl(0, "TelescopeIconSpaceNoBlend", { fg = "#000000", blend = 0 })
+    vim.api.nvim_set_hl(
+      0,
+      "TelescopeIconSpaceNoBlend",
+      { fg = "#000000", blend = 0 }
+    )
 
     local function my_entry_maker(entry)
       local make_entry = require("telescope.make_entry")
       local base_entry = make_entry.gen_from_file()(entry)
-      local ext = base_entry.filename and base_entry.filename:match("^.+%.(.+)$") or ""
+      local ext = base_entry.filename
+          and base_entry.filename:match("^.+%.(.+)$")
+        or ""
       local icon, hl_group =
         require("nvim-web-devicons").get_icon(base_entry.filename or "", ext)
       icon = icon or ""
       hl_group = hl_group or ""
 
-      local display_string = icon .. " " .. base_entry.filename
+      local display_string = icon .. " " .. base_entry.filename
 
       return {
         value = base_entry.value,
@@ -34,7 +40,7 @@ return {
           return display_string,
             {
               { { 0, #icon }, hl_group },
-              { { #icon, #icon + 1 }, "TelescopeIconSpaceNoBlend" },
+              -- { { #icon, #icon + 1 }, "TelescopeIconSpaceNoBlend" },
             }
         end,
       }
