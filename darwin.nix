@@ -50,6 +50,10 @@
     prettierd
     black
     stow
+    colima
+    docker
+    docker-compose
+    postgresql
   ];
   fonts = {
     packages = with pkgs; [
@@ -64,11 +68,11 @@
     onActivation.cleanup = "zap";
 
     taps = [
-      "nikitabobko/tap"
       "koekeishiya/formulae"
     ];
     brews = [
       "koekeishiya/formulae/yabai"
+      "koekeishiya/formulae/skhd"
     ];
     casks = [
       "firefox"
@@ -77,7 +81,6 @@
       "1password"
       "1password-cli"
       "obsidian"
-      "nikitabobko/tap/aerospace"
       "steermouse"
       "microsoft-outlook"
       "microsoft-excel"
@@ -87,11 +90,18 @@
       "dropbox"
       "betterdisplay"
       "wezterm"
+      "prismlauncher"
+      "cloudmounter"
+      "kicad"
+      "cursor"
+      "element"
+      "autodesk-fusion"
     ];
-    masApps = {
-      "1Password for Safari" = 1569813296;
-      "Things 3" = 904280696;
-    };
+    # masApps = {
+    #   "1Password for Safari" = 1569813296;
+    #   "Things 3" = 904280696;
+    #   "WireGuard" = 1451685025;
+    # };
   };
 
   system.defaults = {

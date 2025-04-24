@@ -21,7 +21,7 @@ function lg
 end
 
 function cfg
-  command nvim -c "cd $HOME/dev/nix/dots/home"
+  command nvim -c "cd $HOME/dev/nix"
 end
 
 function dev
@@ -38,4 +38,12 @@ end
 
 pyenv init - | source
 
-
+if not test -f ~/.zshrc
+    command touch ~/.zshrc
+end
+set fish_path (string join ":" $PATH)
+if grep -q "export PATH=" ~/.zshrc
+    sed -i '' "s|export PATH=.*|export PATH=\"$fish_path\"|" ~/.zshrc
+else
+    echo "export PATH=\"$fish_path\"" >> ~/.zshrc
+end
