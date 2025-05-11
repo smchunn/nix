@@ -108,6 +108,7 @@ return {
   -----------
   {
     "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = function()
       local null_ls = require("null-ls")
       local formatting = null_ls.builtins.formatting
@@ -115,7 +116,6 @@ return {
       local lsp_formatting = function(bufnr)
         vim.lsp.buf.format({
           filter = function(client)
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
             return client.name == "null-ls"
           end,
           bufnr = bufnr,

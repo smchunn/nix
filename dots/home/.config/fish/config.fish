@@ -22,6 +22,8 @@ end
 
 function cfg
   command nvim -c "cd $HOME/dev/nix"
+function tvim
+  command nvim -c "cd $HOME/Development/nix" -u "$HOME/.config/nvim/test/init.lua"
 end
 
 function dev
