@@ -29,31 +29,14 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    neovim
+    fish
+    stow
     tmux
     htop
     curl
-    fd
-    fzf
     git
-    gh
-    lazygit
-    ripgrep
-    nodejs
-    rustup
-    eza
-    fish
-    pyenv
-    helix
-    rust-analyzer
     alejandra
-    prettierd
-    black
-    stow
-    colima
-    docker
-    docker-compose
-    postgresql
+    zathura
   ];
   fonts = {
     packages = with pkgs; [
@@ -73,6 +56,25 @@
     brews = [
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
+      "neovim"
+      "evil-helix"
+      "pyenv"
+      "lazygit"
+      "eza"
+      "gh"
+      "ripgrep"
+      "nodejs"
+      "rustup"
+      "rust-analyzer"
+      "prettierd"
+      "black"
+      "colima"
+      "docker"
+      "docker-compose"
+      "postgresql"
+      "cmake"
+      "fd"
+      "fzf"
     ];
     casks = [
       "firefox"
@@ -85,6 +87,7 @@
       "microsoft-outlook"
       "microsoft-excel"
       "microsoft-word"
+      "microsoft-teams"
       "jump"
       "jump-desktop-connect"
       "dropbox"
@@ -96,6 +99,8 @@
       "cursor"
       "element"
       "autodesk-fusion"
+      "basictex"
+      "cleanshot"
     ];
     # masApps = {
     #   "1Password for Safari" = 1569813296;
