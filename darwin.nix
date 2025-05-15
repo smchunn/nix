@@ -3,7 +3,7 @@
   config,
   pkgs,
   self,
-  iosevkaTerm,
+  iosevka-scnf,
   user,
   host,
   platform,
@@ -41,7 +41,7 @@
   fonts = {
     packages = with pkgs; [
       nerd-fonts.meslo-lg
-      iosevkaTerm
+      iosevka-scnf
     ];
   };
   homebrew = {

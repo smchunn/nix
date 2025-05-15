@@ -22,13 +22,42 @@
     user = "smchunn";
     host = "mini";
     platform = "aarch64-darwin";
-    iosevkaTerm = nixpkgs.legacyPackages.${platform}.iosevka.override {
-      set = "Term";
+    iosevka-sc = nixpkgs.legacyPackages.${platform}.iosevka.override {
+      set = "-sc";
+      privateBuildPlan = {
+        family = "iosevka-sc";
+        spacing = "term";
+        serifs = "sans";
+        noCvSs = true;
+        exportGlyhNames = false;
+        noLigation = true;
+
+        weights = {
+          Light = {
+            shape = 300;
+            menu = 300;
+            css = 300;
+          };
+          Regular = {
+            shape = 400;
+            menu = 400;
+            css = 400;
+          };
+          Bold = {
+            shape = 700;
+            menu = 700;
+            css = 700;
+          };
+        };
+      };
+    };
+    iosevka-scnf = nixpkgs.legacyPackages.${platform}.callPackage ./iosevka-nf.nix {
+      inherit iosevka-sc;
     };
   in {
     darwinConfigurations.${host} = nix-darwin.lib.darwinSystem {
       system = platform;
-      specialArgs = {inherit self iosevkaTerm user host platform;};
+      specialArgs = {inherit self iosevka-scnf user host platform;};
       modules = [
         nix-homebrew.darwinModules.nix-homebrew
         {
