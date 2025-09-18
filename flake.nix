@@ -3,13 +3,15 @@
   description = "Simple Nix-Darwin system with NixOS and Homebrew integration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    # macOS: use the darwin-scoped Nixpkgs branch matching nix-darwin 25.05
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+
+    # nix-darwin (25.05) must follow the same nixpkgs
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    # nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nix-homebrew — do NOT override its inputs (they vary by version)
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs = inputs @ {
@@ -17,7 +19,7 @@
     nix-darwin,
     nixpkgs,
     nix-homebrew,
-    home-manager,
+    ...
   }: let
     user = "smchunn";
     host = "mini";
@@ -51,13 +53,20 @@
         };
       };
     };
-    iosevka-scnf = nixpkgs.legacyPackages.${platform}.callPackage ./iosevka-nf.nix {
-      inherit iosevka-sc;
-    };
+    # iosevka-scnf = nixpkgs.legacyPackages.${platform}.callPackage ./patched_fonts.nix {};
   in {
     darwinConfigurations.${host} = nix-darwin.lib.darwinSystem {
       system = platform;
-      specialArgs = {inherit self iosevka-scnf user host platform;};
+      specialArgs = {
+        inherit
+          self
+          iosevka-sc
+          # iosevka-scnf
+          user
+          host
+          platform
+          ;
+      };
       modules = [
         nix-homebrew.darwinModules.nix-homebrew
         {
@@ -68,14 +77,10 @@
           };
         }
         ./darwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.extraSpecialArgs = {inherit user host;};
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = import ./home.nix;
-        }
       ];
     };
+    # packages.${platform} = {
+    #   inherit iosevka-sc iosevka-scnf;
+    # };
   };
 }

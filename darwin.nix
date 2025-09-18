@@ -3,7 +3,8 @@
   config,
   pkgs,
   self,
-  iosevka-scnf,
+  iosevka-sc,
+  # iosevka-scnf,
   user,
   host,
   platform,
@@ -31,17 +32,23 @@
   environment.systemPackages = with pkgs; [
     fish
     stow
+    fd
+    fzf
     tmux
     htop
     curl
     git
     alejandra
     zathura
+    docker
+    docker-compose
+    newsboat
   ];
   fonts = {
     packages = with pkgs; [
       nerd-fonts.meslo-lg
-      iosevka-scnf
+      iosevka-sc
+      # iosevka-scnf
     ];
   };
   homebrew = {
@@ -69,12 +76,11 @@
       "prettierd"
       "black"
       "colima"
-      "docker"
-      "docker-compose"
       "postgresql"
       "cmake"
-      "fd"
-      "fzf"
+      "wget"
+      "arm-none-eabi-gcc"
+      "ninja"
     ];
     casks = [
       "firefox"
@@ -98,9 +104,13 @@
       "kicad"
       "cursor"
       "element"
-      "autodesk-fusion"
       "basictex"
       "cleanshot"
+      "chatgpt"
+      "prusaslicer"
+      "karabiner-elements"
+      "google-chrome"
+      "utm"
     ];
     # masApps = {
     #   "1Password for Safari" = 1569813296;
