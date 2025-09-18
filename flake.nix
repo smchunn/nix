@@ -31,7 +31,7 @@
         spacing = "term";
         serifs = "sans";
         noCvSs = true;
-        exportGlyhNames = false;
+        exportGlyphNames = false;
         noLigation = true;
 
         weights = {
@@ -75,6 +75,7 @@
             enableRosetta = true;
             user = user;
           };
+          system.primaryUser = user;
         }
         ./darwin.nix
       ];
