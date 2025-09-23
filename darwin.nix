@@ -42,7 +42,8 @@
     zathura
     docker
     docker-compose
-    newsboat
+    qemu
+    spice-gtk
   ];
   fonts = {
     packages = with pkgs; [
@@ -64,7 +65,6 @@
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
       "neovim"
-      "evil-helix"
       "pyenv"
       "lazygit"
       "eza"
@@ -102,7 +102,6 @@
       "prismlauncher"
       "cloudmounter"
       "kicad"
-      "cursor"
       "element"
       "basictex"
       "cleanshot"
@@ -110,7 +109,6 @@
       "prusaslicer"
       "karabiner-elements"
       "google-chrome"
-      "utm"
     ];
     # masApps = {
     #   "1Password for Safari" = 1569813296;
@@ -126,17 +124,18 @@
       expose-animation-duration = 0.15;
       show-recents = false;
       persistent-apps = [
-        "/System/Applications/Launchpad.app/"
-        "/Applications/Firefox.app"
+        "/System/Applications/Apps.app/"
         "/System/Cryptexes/App/System/Applications/Safari.app"
         "/System/Applications/System Settings.app/"
         "/System/Applications/App Store.app/"
+        "/System/Applications/Mail.app/"
         "/Applications/Microsoft Outlook.app"
         "/Applications/Microsoft Excel.app"
         "/Applications/Microsoft Word.app"
         "/System/Applications/Preview.app/"
         "/Applications/Obsidian.app"
         "/Applications/WezTerm.app"
+        "/Applications/ChatGPT.app"
         "/Applications/1password.app"
       ];
     };
