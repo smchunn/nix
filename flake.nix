@@ -24,44 +24,12 @@
     user = "smchunn";
     host = "mini";
     platform = "aarch64-darwin";
-    iosevka-sc = nixpkgs.legacyPackages.${platform}.iosevka.override {
-      set = "-sc";
-      privateBuildPlan = {
-        family = "iosevka-sc";
-        spacing = "term";
-        serifs = "sans";
-        noCvSs = true;
-        exportGlyphNames = false;
-        noLigation = true;
-
-        weights = {
-          Light = {
-            shape = 300;
-            menu = 300;
-            css = 300;
-          };
-          Regular = {
-            shape = 400;
-            menu = 400;
-            css = 400;
-          };
-          Bold = {
-            shape = 700;
-            menu = 700;
-            css = 700;
-          };
-        };
-      };
-    };
-    # iosevka-scnf = nixpkgs.legacyPackages.${platform}.callPackage ./patched_fonts.nix {};
   in {
     darwinConfigurations.${host} = nix-darwin.lib.darwinSystem {
       system = platform;
       specialArgs = {
         inherit
           self
-          iosevka-sc
-          # iosevka-scnf
           user
           host
           platform
@@ -80,8 +48,5 @@
         ./darwin.nix
       ];
     };
-    # packages.${platform} = {
-    #   inherit iosevka-sc iosevka-scnf;
-    # };
   };
 }

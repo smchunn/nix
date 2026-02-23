@@ -3,8 +3,6 @@
   config,
   pkgs,
   self,
-  iosevka-sc,
-  # iosevka-scnf,
   user,
   host,
   platform,
@@ -20,6 +18,7 @@
 
   programs.fish.enable = true;
   environment.shells = [pkgs.fish];
+  environment.pathsToLink = ["/share"];
 
   users.users.smchunn = {
     name = user;
@@ -36,6 +35,7 @@
     fzf
     tmux
     htop
+    btop
     curl
     git
     alejandra
@@ -45,13 +45,6 @@
     qemu
     spice-gtk
   ];
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.meslo-lg
-      iosevka-sc
-      # iosevka-scnf
-    ];
-  };
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
@@ -60,6 +53,7 @@
 
     taps = [
       "koekeishiya/formulae"
+      "smchunn/tap"
     ];
     brews = [
       "koekeishiya/formulae/yabai"
@@ -72,20 +66,19 @@
       "ripgrep"
       "nodejs"
       "rustup"
-      "rust-analyzer"
       "prettierd"
       "black"
       "colima"
       "postgresql"
       "cmake"
       "wget"
-      "arm-none-eabi-gcc"
       "ninja"
+      "aria2"
+      "fontconfig"
     ];
     casks = [
       "firefox"
       "alfred"
-      "alacritty"
       "1password"
       "1password-cli"
       "obsidian"
@@ -98,7 +91,6 @@
       "jump-desktop-connect"
       "dropbox"
       "betterdisplay"
-      "wezterm"
       "prismlauncher"
       "cloudmounter"
       "kicad"
@@ -109,6 +101,9 @@
       "prusaslicer"
       "karabiner-elements"
       "google-chrome"
+      "claude"
+      "kitty"
+      "smchunn/tap/font-iosevka-sc"
     ];
     # masApps = {
     #   "1Password for Safari" = 1569813296;
@@ -134,8 +129,9 @@
         "/Applications/Microsoft Word.app"
         "/System/Applications/Preview.app/"
         "/Applications/Obsidian.app"
-        "/Applications/WezTerm.app"
+        "/Applications/kitty.app"
         "/Applications/ChatGPT.app"
+        "/Applications/Claude.app"
         "/Applications/1password.app"
       ];
     };
