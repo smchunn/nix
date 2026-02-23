@@ -26,24 +26,8 @@
     shell = pkgs.fish;
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    fish
-    stow
-    fd
-    fzf
-    tmux
-    htop
-    btop
-    curl
-    git
     alejandra
-    zathura
-    docker
-    docker-compose
-    qemu
-    spice-gtk
   ];
   homebrew = {
     enable = true;
@@ -56,25 +40,55 @@
       "smchunn/tap"
     ];
     brews = [
+      # window management
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
-      "neovim"
-      "pyenv"
-      "lazygit"
+
+      # editors
+      {
+        name = "neovim";
+        args = ["HEAD"];
+      }
+
+      # base CLI tools
+      "bat"
+      "btop"
+      "curl"
+      "fd"
+      "fzf"
+      "git"
+      "htop"
+      "stow"
+      "tmux"
+
+      # dev tools
+      "cmake"
+      "docker"
+      "docker-compose"
       "eza"
       "gh"
-      "ripgrep"
+      "lazygit"
+      "ninja"
       "nodejs"
-      "rustup"
       "prettierd"
       "black"
+      "pyenv"
+      "ripgrep"
+      "rustup"
+
+      # services & runtimes
       "colima"
       "postgresql"
-      "cmake"
-      "wget"
-      "ninja"
-      "aria2"
+      "qemu"
+
+      # document & font tools
+      "zathura"
+      "zathura-pdf-poppler"
       "fontconfig"
+
+      # utilities
+      "aria2"
+      "wget"
     ];
     casks = [
       "firefox"
