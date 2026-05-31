@@ -114,6 +114,7 @@
       "google-chrome"
       "claude"
       "kitty"
+      "temurin@21" # JDK (Java 12 is EOL/unavailable; 21 is latest LTS)
       "smchunn/tap/font-iosevka-sc"
     ];
     # masApps = {
