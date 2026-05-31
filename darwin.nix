@@ -17,6 +17,7 @@
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
   programs.fish.enable = true;
+  programs.zsh.enable = true;
   environment.shells = [pkgs.fish];
   environment.pathsToLink = ["/share"];
 
@@ -57,7 +58,6 @@
       "fd"
       "fzf"
       "git"
-      "htop"
       "stow"
       "tmux"
 
@@ -74,20 +74,18 @@
       "black"
       "pyenv"
       "ripgrep"
-      "rustup"
 
       # services & runtimes
       "colima"
       "postgresql"
       "qemu"
 
-      # document & font tools
+      # document tools
       "zathura"
       "zathura-pdf-poppler"
-      "fontconfig"
 
       # utilities
-      "aria2"
+      "aria2" # torrent download utility
       "wget"
     ];
     casks = [
@@ -108,7 +106,6 @@
       "prismlauncher"
       "cloudmounter"
       "kicad"
-      "element"
       "basictex"
       "cleanshot"
       "chatgpt"
